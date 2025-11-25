@@ -37,7 +37,7 @@ class Solution:
         current_time = releaseTimes[0]
         idx = 0
         for i in range(1,len(releaseTimes)):
-            new_time = release_times[i]-release_times[i-1]
+            new_time = releaseTimes[i]-releaseTimes[i-1]
             if new_time == current_time:
                 if keysPressed[i] > keysPressed[idx]:
                     idx = i
