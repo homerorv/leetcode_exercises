@@ -34,4 +34,29 @@ from typing import List
 
 class Solution:
     def slowestKey(self, releaseTimes: List[int], keysPressed: str) -> str:
-        
+        current_time = releaseTimes[0]
+        idx = 0
+        for i in range(1,len(releaseTimes)):
+            new_time = release_times[i]-release_times[i-1]
+            if new_time == current_time:
+                if keysPressed[i] > keysPressed[idx]:
+                    idx = i
+                    current_time = new_time
+            elif new_time > current_time:
+                idx = i
+                current_time = new_time                    
+
+        return keysPressed[idx]
+    
+
+#release_times =  [12,23,36,46,62]
+release_times =  [12,24,26,46,48]
+key_pressed = "spuda"
+
+sol = Solution()
+answer = sol.slowestKey(release_times,key_pressed)
+print(answer)
+
+
+
+
