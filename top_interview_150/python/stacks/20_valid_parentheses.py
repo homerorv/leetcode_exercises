@@ -44,20 +44,15 @@ class Solution:
                 close = stack.pop() 
                 if letter != dic_paren_def.get(close):
                     return False
-        if len(stack)==0:
-            return True
-        else:
-            return False
-
-        
+        return len(stack)==0
         
 
 #Example 4:
-#s = "(()[])"
+s = "(()[])"
 #Output: true
 
 #Example 5:
-s = "])"
+#s = "])"
 #Output: false
 
 sol = Solution()
