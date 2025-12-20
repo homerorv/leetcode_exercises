@@ -5,14 +5,63 @@ You may assume the two numbers do not contain any leading zero, except the numbe
 Input: l1 = [2,4,3], l2 = [5,6,4]
 Output: [7,0,8]
 Explanation: 342 + 465 = 807.
+
 Example 2:
 
 Input: l1 = [0], l2 = [0]
 Output: [0]
-Example 3:
 
+Example 3:
 Input: l1 = [9,9,9,9,9,9,9], l2 = [9,9,9,9]
 Output: [8,9,9,9,0,0,0,1]
 
-
 '''
+# Definition for singly-linked list.
+class ListNode:
+    def __init__(self, val=0, next=None):
+      self.val = val
+      self.next = next
+
+
+class Solution:
+    def addTwoNumbers(self, l1: Optional[ListNode], l2: Optional[ListNode]) -> Optional[ListNode]:
+        total=0
+        head = None
+        last = head
+        res = 0
+        while l1 != None or l2 != None or res !=0:
+            val1 = l1.val if l1 != None else 0
+            val2 = l2.val if l2 != None else 0
+            total = val1+val2+res
+            item = total % 10            
+            new_node = ListNode(item,None)
+            res = int(total/10)
+            if head == None: 
+                head = new_node
+                last = head
+            else:
+                last.next = new_node
+                last = last.next
+            l1 =l1.next if l1 != None else None
+            l2 =l2.next if l2 != None else None
+        return head
+
+#Input: l1 = [2,4,3], l2 = [5,6,4]
+#output = Output: [7,0,8]
+#l1 = ListNode(2,ListNode(4,ListNode(3)))
+#l2 = ListNode(5,ListNode(6,ListNode(4)))
+
+#l1 =[9,9,9,9,9,9,9]
+#l2= [9,9,9,9]
+# Output: [8,9,9,9,0,0,0,1] 
+l1 = ListNode(9,ListNode(9,ListNode(9,ListNode(9,ListNode(9,ListNode(9,ListNode(9)))))))
+l2 = ListNode(9,ListNode(9,ListNode(9,ListNode(9,))))
+
+
+sol = Solution()
+head = sol.addTwoNumbers(l1,l2)
+
+while(head != None):
+    print(head.val)
+    head = head.next
+
