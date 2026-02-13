@@ -59,23 +59,39 @@ class Solution_official:
                 p2 -= 1
 
 
-#nums1 = [1,2,3,4,6,0,0,0]
-#m = 5
-#nums2 = [5,7,8]
-#n = 3
+class Solution_paco_review:
+    def merge(self, nums1: List[int], m: int, nums2: List[int], n: int) -> None:
+        n1idx = m-1
+        n2idx = n-1
+        for i in range(m+n-1,-1,-1):
+            if n2idx <0:
+                break
+            if n1idx >= 0 and nums1[n1idx]> nums2[n2idx]:
+                nums1[i]=nums1[n1idx]
+                n1idx -= 1
+            else:
+                nums1[i]=nums2[n2idx]
+                n2idx -= 1
+                
 
-nums1 = [2,0]
-m = 1
-nums2 = [1]
-n = 1
+
+nums1 = [1,2,0,0,0]
+m = 5
+nums2 = [5,7,8]
+n = 3
+
+#nums1 = [2,0]
+#m = 1
+#nums2 = [1]
+#n = 1
 
 
-sol_paco = Solution_paco()
+sol_paco = Solution_paco_review()
 sol_paco.merge(nums1,m,nums2,n)
 print(nums1)
 
 #nums1 = [1,2,3,4,6,0,0,0]
-nums1 = [2,0]
+#nums2 = [2,0]
 sol_official = Solution_official()
 sol_official.merge(nums1,m,nums2,n)
 print(nums1)

@@ -1,4 +1,6 @@
 '''
+27. Remove Element
+
 Given an integer array nums and an integer val, remove all occurrences of val in nums in-place. The order of the elements may be changed. Then return the number of elements in nums which are not equal to val.
 
 Consider the number of elements in nums which are not equal to val be k, to get accepted, you need to do the following things:
@@ -53,16 +55,34 @@ class Solution:
                 i += 1
         return i
 
-
+class Solution_paco_review:
+    def removeElement(self, nums: List[int], val: int) -> int:
+        idx = 0
+        for i in range(len(nums)):
+            if nums[i] != val :
+                nums[idx] = nums[i] 
+                idx += 1 
+        return idx
 
 nums = [0,3,2,2,1,3]
-
 val = 3
-
 sol = Solution()
 k = sol.removeElement(nums,val)
+print("--Solucion official--")
 print("k:",k)
 print("nums:",nums)
+
+nums = [0,3,2,2,1,3]
+val = 3
+sol = Solution_paco_review()
+k = sol.removeElement(nums,val)
+print("\n--Solucion paco review --")
+print("k:",k)
+print("nums:",nums)
+
+
+
+
 
 
 
