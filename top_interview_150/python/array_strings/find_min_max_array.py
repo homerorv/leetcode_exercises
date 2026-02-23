@@ -27,7 +27,7 @@ class Solution_max_min:
         final_max = max(left_item.max, right_item.max)
         return item(final_min,final_max)
 
-nums = [4,0,1,3,9,2]    
+nums = [4,0,1]    
 sol = Solution_max_min()
 res = sol.max_min(nums,0,len(nums)-1)
 print("min: ", res.min)

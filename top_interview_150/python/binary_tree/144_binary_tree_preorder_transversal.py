@@ -25,7 +25,6 @@ class Solution:
         res = []
         if root == None:
             return res
-
         res.append(root.val)
         left = self.preorderTraversal_recursive(root.left)
         right = self.preorderTraversal_recursive(root.right)
