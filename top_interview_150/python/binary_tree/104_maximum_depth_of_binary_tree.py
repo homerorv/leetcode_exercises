@@ -34,10 +34,8 @@ class Solution:
         if root == None:
             return 0
         stack = []
-        if stack is not None:
-            stack.append((1,root))        
+        stack.append((1,root))        
         depth=0
-
         while len(stack) > 0:
             current_depth,node = stack.pop()
             if node is not None:
