@@ -24,7 +24,6 @@ class Solution:
         clean_string = lambda s: "".join(c.lower() for c in s if c.isalnum())
         cleaned_str = clean_string(str_pal)
         n = len(cleaned_str)
-        k = (n/2) + 1
         for i in range(n):
             if cleaned_str[i] != cleaned_str[(n-1)-i]:
                 return False

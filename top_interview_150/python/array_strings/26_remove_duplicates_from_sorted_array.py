@@ -21,11 +21,11 @@ It does not matter what you leave beyond the returned k (hence they are undersco
 
 class Solution:
     def removeDuplicates(self, nums: List[int]) -> int:     
-        widx=1
-        for i in range (1,len(nums)):
-            if nums[i-1] != nums[i]:
+        widx = 1
+        for i in range(1,len(nums)):
+            if nums[i] != nums[i-1]:
                 nums[widx] = nums[i]
-                widx +=1
+                widx += 1
         return widx
     
 #nums = [0,0,1,1,1,2,2,3,3,4]

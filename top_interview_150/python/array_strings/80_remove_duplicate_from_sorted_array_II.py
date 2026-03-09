@@ -29,15 +29,17 @@ class Solution:
         while i<len(nums):
             if nums[i] == nums[i-1]:
                 dup += 1
-                if dup > 2:
+                if dup>2:
                     i += 1
                     continue
             else:
                 dup = 1
-            nums[widx]=nums[i]
-            widx += 1
+            nums[widx] = nums[i]
             i += 1
+            widx += 1
         return widx
+
+                
     
 #nums = [1,1,1,2,2,3]
 nums =  [0,0,1,1,1,1,2,3,3]
