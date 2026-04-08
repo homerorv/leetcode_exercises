@@ -22,40 +22,40 @@ class ListNode:
 class Solution:
     def reverseBetween(self, head: Optional[ListNode], left: int, right: int) -> Optional[ListNode]:
         index = 1
-        node_left = head
-        prev_node_left = head
-        
+        node = head
+        prev = None
+
+
+        # Move to the initial position 
         while index < left:
-            prev_node_left = node_left
-            node_left = node_left.next
-            index += 1
-        node_right = node_left
-
-        while index < right:
-            node_right = node_right.next
+            prev = node
+            node = node.next
             index += 1
 
-        node_right = node_right.next
+        left_prev_head = prev
+        right_tail = node        
 
+        while index <= right:
+            next_node  = node.next                
+            node.next = prev
+            prev = node                
+            node = next_node                  
+            index += 1
 
+        if left_prev_head:
+            left_prev_head.next = prev
+        else:
+            head = prev
+        
+        right_tail.next = node
+        
+        return head     
 
-        while node_left != node_right:
-            current = node_left
-            temp = node_right.next
-            prev_node_left.next = current.next
-            node_left = prev_node_left.next
-            node_right.next =current
-            current.next = temp
-            node_right = current
-        return head
-    
-    
-
-l1 = ListNode(1,ListNode(2,ListNode(3,ListNode(4,ListNode(5,ListNode(6))))))
+l1 = ListNode(1,ListNode(2,ListNode(3,ListNode(4,ListNode(5)))))
 
 sol = Solution()
 head = sol.reverseBetween(l1,2,4)
-
+# Output: [1,4,3,2,5]
 while(head != None):
     print(head.val)
     head = head.next
